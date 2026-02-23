@@ -17,6 +17,6 @@ jobs:
             - name: checkout
               uses: actions/checkout@v6.0.2
 
-            - name: Run tests
-              run: npm test
+            - name: Run  python tests
+              run: python -m unittest discover -s tests
                 
