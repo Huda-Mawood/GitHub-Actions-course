@@ -1,14 +1,19 @@
-#!/bin/bash
+# src/test_app.py
+import subprocess
+from pathlib import Path
 
-# شغل app.py وخزن الناتج
-python app.py > tmp_output.txt
+# المسار الصحيح لـ app.py
+app_path = Path(__file__).parent / "app.py"
 
-# ابحث عن النص المطلوب
-if grep -q "Hello from Python! i hate you foreverrrrrr" tmp_output.txt; then
-    echo "Test Passed"
-else
-    echo "Test Failed"
-fi
+# شغّل app.py
+result = subprocess.run(["python3", str(app_path)], capture_output=True, text=True)
 
-# امسحي الملف المؤقت
-rm tmp_output.txt
+output = result.stdout.strip()  # يشيل أي newline
+
+expected = "Hello from Python! i hate you foreverrrrrr"
+
+if output == expected:
+    print("Test Passed")
+else:
+    print("Test Failed")
+    print("Actual output:", repr(output))
