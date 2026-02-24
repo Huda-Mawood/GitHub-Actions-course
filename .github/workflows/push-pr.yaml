@@ -1,22 +1,18 @@
-on:
-    push:
-        branches:
-            - main
-            - "release/**"
-        paths:
-            - "src/**"
-            
-    pull_request:
-        branches:
-            - main
-            - "release/**"
-jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - name: checkout
-              uses: actions/checkout@v6.0.2
+name: Python Test
 
-            - name: Run  python tests
-              run:  python3 src/test_app.py
-                
+on:
+  push:
+    branches: [main, "release/**"]
+    paths: ["src/**"]
+  pull_request:
+    branches: [main, "release/**"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Run Python tests
+        run: python3 src/test_app.py

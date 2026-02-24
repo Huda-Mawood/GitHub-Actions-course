@@ -1,10 +1,16 @@
 # src/test_app.py
+from pathlib import Path
 import subprocess
+import sys
 
-# شغّل app.py وخزن الناتج
-result = subprocess.run(["python", "app.py"], capture_output=True, text=True)
+# المسار الصحيح لـ app.py
+app_path = Path(__file__).parent / "app.py"
 
-output = result.stdout.strip()  # يشيل أي newline أو مسافات
+# شغّل Python بنفس النسخة اللي شغّلة السكربت
+result = subprocess.run([sys.executable, str(app_path)], capture_output=True, text=True)
+
+# نظّف الناتج من أي newline أو carriage return
+output = result.stdout.strip()
 
 expected = "Hello from Python! i hate you foreverrrrrr"
 
