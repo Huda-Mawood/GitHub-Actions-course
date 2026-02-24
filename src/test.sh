@@ -1,6 +1,6 @@
 #!/bin/bash
 
-output=$(python main.py)
+output=$(python app.py)
 
 if [ "$output" == "Hello from Python!" ]; then
     echo "Test Passed "
