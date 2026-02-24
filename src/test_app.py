@@ -12,7 +12,7 @@ result = subprocess.run([sys.executable, str(app_path)], capture_output=True, te
 # نظّف الناتج من أي newline أو carriage return
 output = result.stdout.strip()
 
-expected = "Hello from Python! i hate you foreverrrrrr"
+expected = "Hello from Python! i hate you foreverrrrrrr"
 
 if output == expected:
     print("Test Passed")
