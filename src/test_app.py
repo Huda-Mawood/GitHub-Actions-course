@@ -11,7 +11,7 @@ output = result.stdout.strip()
 expected = "Hello from Python! i hate you foreverrrrrrr"
 
 if output == expected:
-    print("Test Passed")
+    print("Test Passeddddddddddd")
 else:
     print("Test Failed")
     print("Actual output:", repr(output))
